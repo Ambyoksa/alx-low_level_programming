@@ -2,8 +2,6 @@
 
 /**
  * _putchar - unction that prints the numbers, from 0 to 9
- * @n: umbers to be printed
- * Return: numbers 0 to 9
  */
 
 void _putchar(void)
