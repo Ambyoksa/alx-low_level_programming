@@ -6,7 +6,7 @@
  * Return: numbers 0 to 9
  */
 
-int _putchar(int n)
+void _putchar(int n)
 {
 	int n = 0;
 
