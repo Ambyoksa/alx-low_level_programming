@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 
 /**
  * string_toupper - Changes all lowercase letters
@@ -7,17 +7,16 @@ include "main.h"
  *
  * Return: A pointer to the changed string.
  */
-
 char *string_toupper(char *str)
 {
-	int i;
+	int index = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	while (str[index])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-		{
-			str[i] = str[i] - 32;
-		}
+		if (str[index] >= 'a' && str[index] <= 'z')
+			str[index] -= 32;
+
+		index++;
 	}
 
 	return (str);
