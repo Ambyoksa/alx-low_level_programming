@@ -9,7 +9,7 @@
  * Return: 0 if true, 1 if false
  */
 
-int main(int argc, char *argc[])
+int main(int argc, char *argv[])
 {
 	int a, b;
 
@@ -17,7 +17,7 @@ int main(int argc, char *argc[])
 	{
 		a = atoi(argv[1]);
 		b = atoi(argc[2]);
-		printf("%\n", a * b);
+		printf("%d\n", a * b);
 		return (0);
 	}
 	printf("Error\n");
