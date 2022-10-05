@@ -1,47 +1,62 @@
 #include "main.h"
-#include <stdlib.h>
+/**
+ *_strlen - count arrray
+ *@s: array of elements
+ *Return: i
+ */
+
+int _strlen(char *s)
+{
+	unsigned int i;
+
+	i = 0;
+	while (s[i] != '\0') /*Count character of string*/
+	{
+		i++;
+	}
+
+	return (i);
+}
 
 /**
- * alloc_grid - Returns a pointer to a 2-dimensional array of
- *               integers with each element initalized to 0.
- * @width: The width of the 2-dimensional array.
- * @height: The height of the 2-dimensional array.
- *
- * Return: If width <= 0, height <= 0, or the function fails - NULL.
- *         Otherwise - a pointer to the 2-dimensional array of integers.
+ *str_concat - back a pointer to array
+ *@s1: Array one
+ *@s2: Array two
+ *Return: Always an array dinamic
  */
-int **alloc_grid(int width, int height)
+
+char *str_concat(char *s1, char *s2)
 {
-	int **twoD;
-	int hgt_index, wid_index;
+	char *dst;
+	unsigned int i, j, size;
 
-	if (width <= 0 || height <= 0)
-		return (NULL);
+	/*If the array is empty*/
+	if (s1 == NULL)
+		s1 = "";
 
-	twoD = malloc(sizeof(int *) * height);
+	if (s2 == NULL)
+		s2 = "";
 
-	if (twoD == NULL)
-		return (NULL);
+	/*count size total*/
+	size = (_strlen(s1) + _strlen(s2) + 1);
 
-	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	/*malloc*/
+	dst = (char *) malloc(size * sizeof(char));
+
+	if (dst == 0)
 	{
-		twoD[hgt_index] = malloc(sizeof(int) * width);
-
-		if (twoD[hgt_index] == NULL)
-		{
-			for (; hgt_index >= 0; hgt_index--)
-				free(twoD[hgt_index]);
-
-			free(twoD);
-			return (NULL);
-		}
+		return (NULL);
 	}
 
-	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	/*Concatenate arrays*/
+	for (i = 0; *(s1 + i) != '\0'; i++)
+		*(dst + i) = *(s1 + i);
+
+	for (j = 0; *(s2 + j) != '\0'; j++)
 	{
-		for (wid_index = 0; wid_index < width; wid_index++)
-			twoD[hgt_index][wid_index] = 0;
+		*(dst + i) = *(s2 + j);
+		i++;
 	}
 
-	return (twoD);
+	return (dst);
 }
